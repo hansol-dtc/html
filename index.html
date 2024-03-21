@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DTC2024 HTML 강의</title>
+  <meta name="description" content="2024 DTC 신입 대상 HTML 입문 강의 슬라이드">
+  <link rel="icon" type="image/svg+xml" href="/html5-logo.svg">
+  <script type="module" src="/main.js"></script>
+</head>
+
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section data-transition="zoom">
+      <h1>HTML</h1>
+      <p class="subtitle">웹페이지의 뼈대 세우기</p>
+      <p class="byline">2024 DTC</p>
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h3 class="slide-title">슬라이드 보는 법</h3>
+        <table class="keys">
+          <tr><td>&rarr; / Space</td><td>다음으로</td></tr>
+          <tr><td>&larr;</td><td>이전으로</td></tr>
+          <tr><td>&darr; / &uarr;</td><td>같은 주제 안에서 단계 이동</td></tr>
+          <tr><td>O</td><td>전체 슬라이드 한눈에 보기</td></tr>
+          <tr><td>F</td><td>전체화면</td></tr>
+        </table>
+        <p class="hint">아래쪽 화살표가 보이면 그 주제는 단계별로 이어집니다</p>
+        <aside class="notes">처음에 30초만 안내하고 넘어갈 것. 세로 이동을 모르면 내용을 통째로 건너뛴다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">오늘 끝나면 할 수 있는 것</h3>
+        <ul class="goals">
+          <li>HTML 문서의 기본 구조를 직접 작성한다</li>
+          <li>태그와 속성을 읽고 쓴다</li>
+          <li>글, 목록, 링크, 이미지, 표, 입력창을 화면에 올린다</li>
+          <li>내용에 맞는 태그를 고른다 &mdash; 시맨틱</li>
+        </ul>
+        <aside class="notes">마지막 정리에서 이 네 줄을 다시 짚는다. 다음 시간 CSS 강의로 이어진다.</aside>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h3 class="slide-title">HTML이란?</h3>
+        <img class="hero" src="/html5-logo.svg" width="260" height="260" alt="HTML5 로고">
+      </section>
+
+      <section>
+        <h3 class="slide-title">HTML이란?</h3>
+        <p class="lead">HyperText Markup Language</p><p class="hint">문서에 &ldquo;표시(mark)&rdquo;를 달아 구조를 알려주는 언어</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">HTML이란?</h3>
+        <p class="lead">웹페이지의 <strong>뼈대</strong>를 만드는 것</p>
+        <aside class="notes">뼈대를 세우는 게 HTML, 그 위에 피부를 입히는 게 CSS. 다음 시간 주제와 연결해준다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">HTML이란?</h3>
+        <div class="compare">
+          <div><span class="tag-lang">HTML</span><p>제목이다, 문단이다, 목록이다</p><em>무엇인가</em></div>
+          <div><span class="tag-lang">CSS</span><p>크게, 빨갛게, 가운데로</p><em>어떻게 보이는가</em></div>
+        </div>
+        <aside class="notes">둘의 역할 분담. 이 구분이 흐려지면 나중에 유지보수가 힘들어진다.</aside>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h3 class="slide-title">오늘 배울 것</h3>
+        <ol class="toc">
+          <li>HTML 문서의 뼈대</li>
+          <li>태그 문법</li>
+          <li>자주 쓰는 태그들</li>
+          <li>시맨틱 태그</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3. 자주 쓰는 태그들</h3>
+        <ul class="toc">
+          <li>3-1. 제목과 문단</li>
+          <li>3-2. 목록</li>
+          <li>3-3. 링크</li>
+          <li>3-4. 이미지</li>
+          <li>3-5. 표</li>
+          <li>3-6. 입력 폼</li>
+          <li>3-7. div와 span</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>1. HTML 문서의 뼈대</h2><p class="lead">HTML 문서를 만들려면</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">1. 문서의 뼈대</h3>
+        <pre>
+          <code class="language-html" data-trim>
+            &lt;!doctype html&gt;
+            &lt;html&gt;
+              &lt;head&gt;
+              &lt;/head&gt;
+              &lt;body&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
+          </code>
+        </pre>
+        <aside class="notes">이 다섯 줄은 외우는 게 아니라 손에 익히는 것. 에디터가 자동완성해준다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">1. 문서의 뼈대</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;!doctype html&gt;
+              &lt;html lang="ko"&gt;
+                &lt;head&gt;
+                  &lt;meta charset="utf-8"&gt;
+                  &lt;title&gt;내 첫 페이지&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                &lt;/body&gt;
+              &lt;/html&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <p class="empty-note">아직 화면에 아무것도 없습니다</p>
+          </div>
+        </div>
+        <aside class="notes">head에 아무리 많이 써도 화면에는 안 나온다. title은 탭에만 보인다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">1. 문서의 뼈대</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;!doctype html&gt;
+              &lt;html lang="ko"&gt;
+                &lt;head&gt;
+                  &lt;meta charset="utf-8"&gt;
+                  &lt;title&gt;내 첫 페이지&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                  &lt;h1&gt;안녕하세요&lt;/h1&gt;
+                  &lt;p&gt;제 첫 웹페이지입니다&lt;/p&gt;
+                &lt;/body&gt;
+              &lt;/html&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <h1>안녕하세요</h1>
+            <p>제 첫 웹페이지입니다</p>
+          </div>
+        </div>
+        <aside class="notes">body에 쓴 것만 화면에 나온다. 여기서 처음으로 뭔가 보인다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">1. 정리</h3>
+        <ul class="summary-card">
+          <li><code class="inline">&lt;!doctype html&gt;</code> &mdash; HTML 문서라는 선언. 맨 첫 줄</li>
+          <li><code class="inline">&lt;head&gt;</code> &mdash; 화면에 <strong>안 보이는</strong> 정보. 제목, 문자 인코딩</li>
+          <li><code class="inline">&lt;body&gt;</code> &mdash; 화면에 <strong>보이는</strong> 내용</li>
+        </ul>
+        <p class="hint">한글이 깨지면 십중팔구 <code class="inline">&lt;meta charset="utf-8"&gt;</code>가 없는 것</p>
+        <aside class="notes">charset 빠뜨려서 한글 깨지는 사고가 매년 나온다. 미리 못 박아둘 것.</aside>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>2. 태그 문법</h2><p class="lead">태그를 제대로 쓰려면</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">2. 태그 문법</h3>
+        <div class="anatomy">
+          <div class="part"><code>&lt;p&gt;</code><em>여는 태그</em></div>
+          <div class="part content"><code>안녕하세요</code><em>내용</em></div>
+          <div class="part"><code>&lt;/p&gt;</code><em>닫는 태그</em></div>
+        </div>
+        <p class="hint">내용을 태그로 감싸서 &ldquo;이건 문단이다&rdquo;라고 알려준다</p>
+        <aside class="notes">닫는 태그의 슬래시를 빠뜨리는 실수가 제일 흔하다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">2. 태그 문법</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;p&gt;안녕하세요&lt;/p&gt;
+              &lt;p&gt;반갑습니다&lt;/p&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <p>안녕하세요</p>
+            <p>반갑습니다</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="slide-title">2. 태그 문법 <span class="tag">속성</span></h3>
+        <div class="anatomy">
+          <div class="part"><code>&lt;a</code><em>태그 이름</em></div>
+          <div class="part attr"><code>href="https://example.com"</code><em>속성 이름 = "값"</em></div>
+          <div class="part"><code>&gt;</code><em></em></div>
+        </div>
+        <p class="hint">태그에 추가 정보를 붙이는 것이 <strong>속성</strong></p>
+        <aside class="notes">속성 값은 항상 따옴표로 감싼다. 여는 태그 안에만 쓴다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">2. 태그 문법 <span class="tag">빈 태그</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;!-- 닫는 태그가 없는 태그도 있다 --&gt;
+              &lt;img src="cat.png" alt="고양이"&gt;
+              &lt;br&gt;
+              &lt;hr&gt;
+              &lt;input type="text"&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <p>줄바꿈<br>했습니다</p>
+            <hr>
+            <input type="text" placeholder="입력창">
+          </div>
+        </div>
+        <aside class="notes">감쌀 내용이 없는 태그는 닫지 않는다. img, br, hr, input, meta 정도만 기억하면 된다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">2. 태그 문법 <span class="tag">중첩</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;!-- 올바른 중첩 --&gt;
+              &lt;p&gt;&lt;strong&gt;중요한&lt;/strong&gt; 문단&lt;/p&gt;
+
+              &lt;!-- 잘못된 중첩 --&gt;
+              &lt;p&gt;&lt;strong&gt;중요한 문단&lt;/p&gt;&lt;/strong&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <p><strong>중요한</strong> 문단</p>
+          </div>
+        </div>
+        <p class="ask">둘 중 어느 쪽이 맞을까요?</p>
+        <aside class="notes">나중에 연 태그를 먼저 닫는다. 괄호와 같은 규칙이다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">2. 정리</h3>
+        <ul class="summary-card">
+          <li><code class="inline">&lt;태그&gt;내용&lt;/태그&gt;</code> &mdash; 감싸서 의미를 부여</li>
+          <li><code class="inline">&lt;태그 속성="값"&gt;</code> &mdash; 속성은 여는 태그 안에</li>
+          <li><code class="inline">&lt;img&gt;</code>, <code class="inline">&lt;br&gt;</code> &mdash; 닫는 태그가 없는 빈 태그</li>
+          <li>나중에 연 태그를 먼저 닫는다</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>3-1. 제목과 문단</h2><p class="lead">글을 화면에 올리려면</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-1. 제목과 문단</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;h1&gt;제목 1&lt;/h1&gt;
+              &lt;h2&gt;제목 2&lt;/h2&gt;
+              &lt;h3&gt;제목 3&lt;/h3&gt;
+              &lt;h4&gt;제목 4&lt;/h4&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <h1>제목 1</h1>
+            <h2>제목 2</h2>
+            <h3>제목 3</h3>
+            <h4>제목 4</h4>
+          </div>
+        </div>
+        <aside class="notes">h1부터 h6까지 있다. 숫자가 커질수록 하위 제목. 크기는 부수 효과일 뿐, 중요한 건 순서다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-1. 제목과 문단</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;h1&gt;가장 큰 제목&lt;/h1&gt;
+              &lt;p&gt;제목 아래 설명하는 문단입니다.&lt;/p&gt;
+              &lt;p&gt;문단을 나누면 줄이 바뀝니다.&lt;/p&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <h1>가장 큰 제목</h1>
+            <p>제목 아래 설명하는 문단입니다.</p>
+            <p>문단을 나누면 줄이 바뀝니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-1. 제목과 문단</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;p&gt;한 문단 안에서&lt;br&gt;줄만 바꾸려면 br&lt;/p&gt;
+              &lt;hr&gt;
+              &lt;p&gt;hr은 구분선입니다&lt;/p&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <p>한 문단 안에서<br>줄만 바꾸려면 br</p>
+            <hr>
+            <p>hr은 구분선입니다</p>
+          </div>
+        </div>
+        <aside class="notes">br을 여러 번 써서 간격을 벌리는 건 나쁜 습관. 간격은 CSS로.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-1. 정리</h3>
+        <ul class="summary-card">
+          <li><code class="inline">&lt;h1&gt;</code> ~ <code class="inline">&lt;h6&gt;</code> &mdash; 제목. h1은 페이지에 하나만</li>
+          <li><code class="inline">&lt;p&gt;</code> &mdash; 문단</li>
+          <li><code class="inline">&lt;br&gt;</code> &mdash; 줄바꿈, <code class="inline">&lt;hr&gt;</code> &mdash; 구분선</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>3-2. 목록</h2><p class="lead">여러 항목을 나열하려면</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-2. 목록 <span class="tag">순서 없음</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;ul&gt;
+                &lt;li&gt;사과&lt;/li&gt;
+                &lt;li&gt;바나나&lt;/li&gt;
+                &lt;li&gt;포도&lt;/li&gt;
+              &lt;/ul&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <ul>
+              <li>사과</li>
+              <li>바나나</li>
+              <li>포도</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">ul = unordered list. 순서가 중요하지 않은 목록.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-2. 목록 <span class="tag">순서 있음</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;ol&gt;
+                &lt;li&gt;재료를 준비한다&lt;/li&gt;
+                &lt;li&gt;물을 끓인다&lt;/li&gt;
+                &lt;li&gt;면을 넣는다&lt;/li&gt;
+              &lt;/ol&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <ol>
+              <li>재료를 준비한다</li>
+              <li>물을 끓인다</li>
+              <li>면을 넣는다</li>
+            </ol>
+          </div>
+        </div>
+        <aside class="notes">ol = ordered list. 번호는 브라우저가 알아서 매긴다. 직접 1. 2. 를 타이핑하지 않는다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-2. 목록 <span class="tag">중첩</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;ul&gt;
+                &lt;li&gt;과일
+                  &lt;ul&gt;
+                    &lt;li&gt;사과&lt;/li&gt;
+                    &lt;li&gt;바나나&lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;채소&lt;/li&gt;
+              &lt;/ul&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <ul>
+              <li>과일
+                <ul>
+                  <li>사과</li>
+                  <li>바나나</li>
+                </ul>
+              </li>
+              <li>채소</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">안쪽 ul은 li 안에 들어간다. 이걸 틀리는 경우가 많다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-2. 정리</h3>
+        <ul class="summary-card">
+          <li><code class="inline">&lt;ul&gt;</code> &mdash; 순서 없는 목록 (점)</li>
+          <li><code class="inline">&lt;ol&gt;</code> &mdash; 순서 있는 목록 (번호)</li>
+          <li><code class="inline">&lt;li&gt;</code> &mdash; 항목. 항상 ul이나 ol 안에</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>3-3. 링크</h2><p class="lead">다른 페이지로 이동하려면</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-3. 링크</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;a href="https://developer.mozilla.org"&gt;
+                MDN 문서 보러가기
+              &lt;/a&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <a href="https://developer.mozilla.org" target="_blank" rel="noreferrer">MDN 문서 보러가기</a>
+          </div>
+        </div>
+        <aside class="notes">a = anchor. href에 주소를 넣는다. 이게 HyperText의 Hyper다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-3. 링크 <span class="tag">새 탭</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;!-- 새 탭에서 열려면 --&gt;
+              &lt;a href="https://developer.mozilla.org"
+                 target="_blank"&gt;
+                MDN 문서 보러가기
+              &lt;/a&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <a href="https://developer.mozilla.org" target="_blank" rel="noreferrer">MDN 문서 보러가기</a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-3. 링크 <span class="tag">여러 가지</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;!-- 같은 폴더의 다른 파일로 --&gt;
+              &lt;a href="about.html"&gt;소개 페이지&lt;/a&gt;
+
+              &lt;!-- 메일 보내기 --&gt;
+              &lt;a href="mailto:dtc@example.com"&gt;메일 보내기&lt;/a&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <a href="#">소개 페이지</a><br>
+            <a href="#">메일 보내기</a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-3. 정리</h3>
+        <ul class="summary-card">
+          <li><code class="inline">&lt;a href="주소"&gt;글자&lt;/a&gt;</code></li>
+          <li><code class="inline">target="_blank"</code> &mdash; 새 탭에서 열기</li>
+          <li>주소 자리에는 웹주소도, 같은 폴더의 파일 이름도 들어간다</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>3-4. 이미지</h2><p class="lead">그림을 넣으려면</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-4. 이미지</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;img src="html5-logo.svg" alt="HTML5 로고"&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <img src="/html5-logo.svg" alt="HTML5 로고" width="90">
+          </div>
+        </div>
+        <aside class="notes">img는 닫는 태그가 없다. src에 파일 경로를 넣는다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-4. 이미지 <span class="tag">크기</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;img src="html5-logo.svg"
+                   alt="HTML5 로고"
+                   width="200"&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <img src="/html5-logo.svg" alt="HTML5 로고" width="140">
+          </div>
+        </div>
+        <aside class="notes">width만 주면 비율은 알아서 유지된다. 정교한 크기 조정은 CSS에서.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-4. 이미지 <span class="tag">alt</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;!-- 그림을 못 불러오면? --&gt;
+              &lt;img src="없는파일.png"
+                   alt="웃고 있는 고양이"&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <img src="/does-not-exist.png" alt="웃고 있는 고양이">
+          </div>
+        </div>
+        <p class="ask">그림 파일이 없으면 화면에 뭐가 나올까요?</p>
+        <aside class="notes">alt는 그림을 못 볼 때 대신 읽히는 글. 눈이 불편한 사용자의 스크린리더가 이걸 읽는다. 장식용이 아니면 반드시 쓴다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-4. 정리</h3>
+        <ul class="summary-card">
+          <li><code class="inline">&lt;img src="경로" alt="설명"&gt;</code></li>
+          <li><code class="inline">src</code> &mdash; 그림 파일의 위치</li>
+          <li><code class="inline">alt</code> &mdash; 그림을 못 볼 때 대신 읽히는 글. 생략하지 말 것</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>3-5. 표</h2><p class="lead">행과 열로 된 자료를 보여주려면</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-5. 표</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;table&gt;
+                &lt;tr&gt;
+                  &lt;th&gt;이름&lt;/th&gt;
+                  &lt;th&gt;학과&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;홍길동&lt;/td&gt;
+                  &lt;td&gt;컴퓨터공학&lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/table&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <table>
+              <tr><th>이름</th><th>학과</th></tr>
+              <tr><td>홍길동</td><td>컴퓨터공학</td></tr>
+            </table>
+          </div>
+        </div>
+        <aside class="notes">tr = 한 줄(행), th = 제목 칸, td = 일반 칸. 표는 자료를 보여줄 때만 쓴다. 화면 배치용으로 쓰지 않는다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-5. 정리</h3>
+        <ul class="summary-card">
+          <li><code class="inline">&lt;table&gt;</code> &mdash; 표 전체</li>
+          <li><code class="inline">&lt;tr&gt;</code> &mdash; 한 줄 (table row)</li>
+          <li><code class="inline">&lt;th&gt;</code> &mdash; 제목 칸, <code class="inline">&lt;td&gt;</code> &mdash; 일반 칸</li>
+        </ul>
+        <p class="hint">표는 &ldquo;자료&rdquo;를 위한 것이지 &ldquo;배치&rdquo;를 위한 것이 아니다</p>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>3-6. 입력 폼</h2><p class="lead">사용자에게 무언가를 받으려면</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-6. 입력 폼</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;form&gt;
+                &lt;label for="name"&gt;이름&lt;/label&gt;
+                &lt;input type="text" id="name"&gt;
+
+                &lt;label for="email"&gt;이메일&lt;/label&gt;
+                &lt;input type="email" id="email"&gt;
+
+                &lt;button type="submit"&gt;보내기&lt;/button&gt;
+              &lt;/form&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <form onsubmit="return false">
+              <p><label for="d-name">이름</label>
+              <input type="text" id="d-name"></p>
+              <p><label for="d-email">이메일</label>
+              <input type="email" id="d-email"></p>
+              <p><button type="submit">보내기</button></p>
+            </form>
+          </div>
+        </div>
+        <aside class="notes">label의 for와 input의 id를 같게 맞추면 글자를 눌러도 입력창이 선택된다. 직접 눌러 보여줄 것.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-6. 입력 폼 <span class="tag">type</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;input type="text"&gt;
+              &lt;input type="password"&gt;
+              &lt;input type="date"&gt;
+              &lt;input type="checkbox"&gt;
+              &lt;input type="radio"&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <p><input type="text" placeholder="text"></p>
+            <p><input type="password" placeholder="password"></p>
+            <p><input type="date"></p>
+            <p><input type="checkbox" id="d-c"> <label for="d-c">체크박스</label></p>
+            <p><input type="radio" name="d-r" id="d-r"> <label for="d-r">라디오</label></p>
+          </div>
+        </div>
+        <aside class="notes">type 하나만 바꿔도 완전히 다른 입력창이 된다. date는 브라우저가 달력까지 띄워준다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-6. 정리</h3>
+        <ul class="summary-card">
+          <li><code class="inline">&lt;input type="..."&gt;</code> &mdash; type에 따라 모양이 달라진다</li>
+          <li><code class="inline">&lt;label for="id"&gt;</code> &mdash; 입력창의 이름표. id와 짝을 맞춘다</li>
+          <li><code class="inline">&lt;button&gt;</code> &mdash; 누르는 버튼</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>3-7. div와 span</h2><p class="lead">특별한 의미 없이 묶기만 하려면</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-7. div와 span</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;div&gt;
+                &lt;h2&gt;공지사항&lt;/h2&gt;
+                &lt;p&gt;내일은 휴강입니다&lt;/p&gt;
+              &lt;/div&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <div style="border:1px dashed #999; padding:.5em;">
+              <h2>공지사항</h2>
+              <p>내일은 휴강입니다</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">div는 여러 요소를 한 덩어리로 묶는 상자. 줄 전체를 차지한다. 점선은 설명을 위해 그린 것.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-7. div와 span</h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;p&gt;여기서 &lt;span&gt;이 부분만&lt;/span&gt; 강조&lt;/p&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <p>여기서 <span style="background:#ffe08a;">이 부분만</span> 강조</p>
+          </div>
+        </div>
+        <aside class="notes">span은 글 흐름 안에서 일부만 감싼다. 줄을 바꾸지 않는다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">3-7. 정리</h3>
+        <ul class="summary-card">
+          <li><code class="inline">&lt;div&gt;</code> &mdash; 덩어리로 묶는다. 줄 전체를 차지</li>
+          <li><code class="inline">&lt;span&gt;</code> &mdash; 글 일부만 묶는다. 줄을 바꾸지 않음</li>
+          <li>둘 다 <strong>의미가 없다</strong>. 꾸미려고 묶을 때만 쓴다</li>
+        </ul>
+        <p class="hint">여기에 CSS를 붙이는 방법은 다음 시간에</p>
+        <aside class="notes">CSS 강의의 id/class로 자연스럽게 이어지는 지점.</aside>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>4. 시맨틱 태그</h2><p class="lead">내용에 맞는 태그를 고르려면</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">4. 시맨틱 태그 <span class="tag">전부 div</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;div class="header"&gt;
+                &lt;h1&gt;DTC 블로그&lt;/h1&gt;
+                &lt;div class="nav"&gt;홈 · 소개&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="main"&gt;
+                &lt;div class="article"&gt;
+                  &lt;h2&gt;첫 번째 글&lt;/h2&gt;
+                  &lt;p&gt;오늘 HTML을 배웠습니다.&lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="footer"&gt;© 2024 DTC&lt;/div&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <h1>DTC 블로그</h1>
+            <p>홈 · 소개</p>
+            <h2>첫 번째 글</h2>
+            <p>오늘 HTML을 배웠습니다.</p>
+            <p>© 2024 DTC</p>
+          </div>
+        </div>
+        <p class="ask">여기서 태그 이름만 바꾸면 화면이 달라질까요?</p>
+        <aside class="notes">전부 div로도 만들 수 있다. 화면은 이렇게 나온다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">4. 시맨틱 태그 <span class="tag">시맨틱</span></h3>
+        <div class="split">
+          <pre>
+            <code class="language-html" data-trim>
+              &lt;header&gt;
+                &lt;h1&gt;DTC 블로그&lt;/h1&gt;
+                &lt;nav&gt;홈 · 소개&lt;/nav&gt;
+              &lt;/header&gt;
+              &lt;main&gt;
+                &lt;article&gt;
+                  &lt;h2&gt;첫 번째 글&lt;/h2&gt;
+                  &lt;p&gt;오늘 HTML을 배웠습니다.&lt;/p&gt;
+                &lt;/article&gt;
+              &lt;/main&gt;
+              &lt;footer&gt;© 2024 DTC&lt;/footer&gt;
+            </code>
+          </pre>
+          <div class="demo" data-label="브라우저 화면">
+            <h1>DTC 블로그</h1>
+            <p>홈 · 소개</p>
+            <h2>첫 번째 글</h2>
+            <p>오늘 HTML을 배웠습니다.</p>
+            <p>© 2024 DTC</p>
+          </div>
+        </div>
+        <aside class="notes">오른쪽 화면을 앞 슬라이드와 비교시킬 것. 완전히 같다. 태그 이름만 바꿨는데 화면은 한 픽셀도 안 변했다. 그럼 왜 바꾸나?</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">4. 무엇이 달라지는가</h3>
+        <div class="compare">
+          <div><span class="tag-lang">div 범벅</span><p>여기 뭔가 있다</p><em>기계가 알 수 있는 것</em></div>
+          <div><span class="tag-lang">시맨틱</span><p>여기가 머리말,<br>여기가 본문</p><em>기계가 알 수 있는 것</em></div>
+        </div>
+        <p class="hint">화면은 같지만 &ldquo;뜻&rdquo;이 다르다</p>
+        <aside class="notes">사람 눈에는 같지만 기계에는 다르다. 그 기계가 검색엔진과 스크린리더다.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">4. 왜 쓰는가</h3>
+        <ul class="summary-card">
+          <li>검색엔진이 무엇이 본문인지 안다</li>
+          <li>스크린리더가 &ldquo;머리말&rdquo;, &ldquo;탐색 메뉴&rdquo;라고 읽어준다</li>
+          <li>다른 사람이 코드를 읽을 때 구조가 바로 보인다</li>
+        </ul>
+        <aside class="notes">div 범벅은 나중에 자기가 봐도 못 알아본다. 실무에서 가장 크게 체감되는 부분.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">4. 자주 쓰는 시맨틱 태그</h3>
+        <table class="summary">
+          <tr><td>&lt;header&gt;</td><td>페이지나 구역의 머리말</td></tr>
+          <tr><td>&lt;nav&gt;</td><td>메뉴, 탐색 링크 모음</td></tr>
+          <tr><td>&lt;main&gt;</td><td>페이지의 핵심 내용. 하나만</td></tr>
+          <tr><td>&lt;section&gt;</td><td>주제별로 나눈 구역</td></tr>
+          <tr><td>&lt;article&gt;</td><td>그 자체로 완결된 글</td></tr>
+          <tr><td>&lt;footer&gt;</td><td>바닥글, 저작권 표시</td></tr>
+        </table>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>5. 정리</h2><p class="lead">오늘 배운 것</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">문서의 뼈대</h3>
+        <ul class="summary-card">
+          <li><code class="inline">&lt;!doctype&gt;</code> &rarr; <code class="inline">&lt;html&gt;</code> &rarr; <code class="inline">&lt;head&gt;</code> + <code class="inline">&lt;body&gt;</code></li>
+          <li>보이는 건 전부 <code class="inline">&lt;body&gt;</code> 안에</li>
+          <li>태그로 감싸고, 속성으로 정보를 더한다</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 class="slide-title">태그</h3>
+        <table class="summary">
+          <tr><td>h1 ~ h6, p</td><td>제목과 문단</td></tr>
+          <tr><td>ul, ol, li</td><td>목록</td></tr>
+          <tr><td>a</td><td>링크 &mdash; href</td></tr>
+          <tr><td>img</td><td>이미지 &mdash; src, alt</td></tr>
+          <tr><td>table, tr, th, td</td><td>표</td></tr>
+          <tr><td>form, input, label, button</td><td>입력 폼</td></tr>
+          <tr><td>div, span</td><td>의미 없이 묶기</td></tr>
+          <tr><td>header, nav, main, footer</td><td>시맨틱 태그</td></tr>
+        </table>
+      </section>
+
+    </section>
+
+    <section data-transition="convex">
+
+      <section>
+        <h2>6. 실습</h2><p class="lead">직접 만들어봅시다</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">6. 실습 과제</h3>
+        <ol class="toc">
+          <li>자기소개 페이지 &mdash; 제목, 사진, 짧은 소개 문단</li>
+          <li>좋아하는 것 3가지를 목록으로</li>
+          <li>시간표를 표로</li>
+          <li>연락처 링크와 간단한 문의 폼</li>
+        </ol>
+        <p class="hint">오늘 배운 태그만으로 전부 만들 수 있습니다</p>
+        <aside class="notes">1번까지는 같이 라이브 코딩. 나머지는 과제. 다음 시간에 이 페이지를 CSS로 꾸민다고 예고할 것.</aside>
+      </section>
+
+      <section>
+        <h3 class="slide-title">더 볼 것</h3>
+        <ul class="toc">
+          <li><a href="https://developer.mozilla.org/ko/docs/Web/HTML" target="_blank" rel="noreferrer">MDN HTML 문서</a> &mdash; 태그가 기억 안 날 때</li>
+          <li><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element" target="_blank" rel="noreferrer">HTML 요소 목록</a> &mdash; 전체 태그 사전</li>
+          <li><a href="https://validator.w3.org/" target="_blank" rel="noreferrer">W3C Validator</a> &mdash; 내 HTML이 올바른지 검사</li>
+        </ul>
+      </section>
+
+      <section data-transition="zoom">
+        <h1>끝</h1><p class="subtitle">다음 시간엔 CSS로 꾸며봅시다</p>
+      </section>
+
+    </section>
+
+  </div>
+</div>
+</body>
+
+</html>
